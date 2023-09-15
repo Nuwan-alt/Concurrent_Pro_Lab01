@@ -49,7 +49,7 @@ unsigned long manage_rw(int m,int n, float insFrac, float memFrac, float delFrac
 
     gettimeofday(&start, NULL);
     // print thread count
-    printf("Thread count: %d\n",thread_count_rw);
+//    printf("Thread count: %d\n",thread_count_rw);
 
     for (int thread=0; thread < thread_count_rw ; thread++){
         pthread_create(&thread_handles[thread],NULL,conRW_runner,(void*) &thread);
@@ -69,9 +69,9 @@ unsigned long manage_rw(int m,int n, float insFrac, float memFrac, float delFrac
     //printf("took %lu us\n", (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec);
 
     destructor(head_rw);
-    printf("Mutex ran!\n");
+//    printf("Mutex ran!\n");
     //print the time taken
-    printf("Mutex took %lu us\n",time);
+//    printf("Mutex took %lu us\n",time);
     return time;
 }
 
@@ -121,6 +121,6 @@ void *conRW_runner(void* rank){
 
         }
     }
-    printf("Hello from thread %d\n",tot_rw);
+//    printf("Hello from thread %d\n",tot_rw);
 
 }

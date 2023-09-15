@@ -50,7 +50,7 @@ unsigned long manage_mutex(int m,int n, float insFrac, float memFrac, float delF
 
     gettimeofday(&start, NULL);
     // print thread count
-    printf("Thread count: %d\n",thread_count_mu);
+//    printf("Thread count: %d\n",thread_count_mu);
 
     for (int thread=0; thread < thread_count_mu ; thread++){
         pthread_create(&thread_handles[thread],NULL,conMutex_runner,(void*) &thread);
@@ -70,9 +70,9 @@ unsigned long manage_mutex(int m,int n, float insFrac, float memFrac, float delF
     //printf("took %lu us\n", (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec);
 
     destructor(head);
-    printf("Mutex ran!\n");
+//    printf("Mutex ran!\n");
     //print the time taken
-    printf("Mutex took %lu us\n",time);
+//    printf("Mutex took %lu us\n",time);
     return time;
 }
 
@@ -87,12 +87,14 @@ void *conMutex_runner(void* rank){
 
     long my_rank_mu = (long) rank;
 
+
     while (tot_mu < totOps_mu){
 
         int rand_value = rand() % 65535;
+        int opp_value = rand() % 3;
 
 
-        if (ins_mu < insOps_mu){
+        if (ins_mu < insOps_mu && opp_value == 0){
                 pthread_mutex_lock(&mutex);
                 short res = Insert(rand_value, &head);
                 ins_mu++;
@@ -101,7 +103,7 @@ void *conMutex_runner(void* rank){
                 //printf("Thread %ld Operation %d , Insert %d %d\n", thread_data->rank, thread_data->totOps, rand_value, res);
 
         }
-        else if(del_mu < delOps_mu){
+        else if(del_mu < delOps_mu && opp_value == 1){
                 pthread_mutex_lock(&mutex);
                 short res = Delete(rand_value, &head);
                 del_mu++;
@@ -110,7 +112,7 @@ void *conMutex_runner(void* rank){
                 //printf("Thread %ld Operation %d , Delete %d %d\n", thread_data->rank, thread_data->totOps, rand_value, res);
         }
 
-        else if(mem_mu < memOps_mu){
+        else if(mem_mu < memOps_mu && opp_value == 2){
                 pthread_mutex_lock(&mutex);
                 short res = Member(rand_value, head);
                 mem_mu++;
@@ -120,6 +122,6 @@ void *conMutex_runner(void* rank){
 
         }
     }
-    printf("Hello from thread %d\n",tot_mu);
+//    printf("Hello from thread %d\n",tot_mu);
 
 }

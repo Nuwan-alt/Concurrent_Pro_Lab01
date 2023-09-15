@@ -40,8 +40,8 @@ unsigned long manage_serial(int m, float insFrac, float memFrac, float delFrac){
 
 
     gettimeofday(&start, NULL);
-    conSerial_runner();
 
+    conSerial_runner();
 
     //Function call
     gettimeofday(&stop, NULL);
@@ -50,9 +50,9 @@ unsigned long manage_serial(int m, float insFrac, float memFrac, float delFrac){
     //printf("took %lu us\n", (stop.tv_sec - start.tv_sec) * 1000000 + stop.tv_usec - start.tv_usec);
 
     destructor(head_se);
-    printf("Mutex ran!\n");
-    //print the time taken
-    printf("Mutex took %lu us\n",time);
+//    printf("Serial ran!\n");
+
+//    printf("Serial took %lu us\n",time);
     return time;
 }
 
@@ -93,6 +93,6 @@ void *conSerial_runner(){
 
         }
     }
-    printf("Hello from thread %d\n",tot_se);
+//    printf("Hello from thread %d\n",tot_se);
 
 }
