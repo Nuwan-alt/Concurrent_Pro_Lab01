@@ -4,8 +4,10 @@
 #include "rw_lock.h"
 #include "serial.h"
 #include "executer.h"
+#include "stat.h"
 
 int main() {
-    serial_executer();
+    executer();
+    test();
     return 0;
 }

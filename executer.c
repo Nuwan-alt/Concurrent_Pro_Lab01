@@ -9,14 +9,14 @@
 double runFractions[3][3] = {{0.005,0.99,0.005},{0.05,0.9,0.05},{0.25,0.5,0.25}};
 int numThreads[4] = {1,2,4,8};
 
-void serial_executer(){
+void executer(){
     char path[100];
 
     FILE *fp;
 
     // Serial execution
     for(int i=0;i<3;i++){
-        snprintf(path, sizeof(path), "../results/serial/Case%d.csv", i + 1);
+        snprintf(path, sizeof(path), "../results/serial/Case%d.txt", i + 1);
         fp = fopen(path, "w+");
         printf("Serial Case %d\n",i+1);
 
@@ -38,7 +38,7 @@ void serial_executer(){
         printf("Mutex Case %d\n",i+1);
 
         for(int  k=0;k<4;k++){
-            snprintf(path, sizeof(path), "../results/mutex/Case%d_T%d.csv", i + 1,numThreads[k]);
+            snprintf(path, sizeof(path), "../results/mutex/Case%d_T%d.txt", i + 1,numThreads[k]);
             fp = fopen(path, "w+");
             for(int j=0;j<385;j++){
                 unsigned long mutex_runtime;
@@ -57,7 +57,7 @@ void serial_executer(){
         printf("RW Case %d\n",i+1);
 
         for(int  k=0;k<4;k++){
-            snprintf(path, sizeof(path), "../results/rw_lock/Case%d_T%d.csv", i + 1,numThreads[k]);
+            snprintf(path, sizeof(path), "../results/rw_lock/Case%d_T%d.txt", i + 1,numThreads[k]);
             fp = fopen(path, "w+");
             for(int j=0;j<385;j++){
                 unsigned long re_runtime;
@@ -67,5 +67,7 @@ void serial_executer(){
         }
     }
     fclose(fp);
+
+    printf("======================================== Test Completed ========================================\n");
 
 }

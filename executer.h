@@ -4,5 +4,5 @@
 
 #ifndef MUTEX_NEW_EXECUTER_H
 #define MUTEX_NEW_EXECUTER_H
-void *serial_executer();
+void *executer();
 #endif //MUTEX_NEW_EXECUTER_H

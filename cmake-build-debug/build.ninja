@@ -85,6 +85,12 @@ build CMakeFiles/mutex_new.dir/executer.c.obj: C_COMPILER__mutex_new_unscanned_D
   OBJECT_DIR = CMakeFiles\mutex_new.dir
   OBJECT_FILE_DIR = CMakeFiles\mutex_new.dir
 
+build CMakeFiles/mutex_new.dir/stat.c.obj: C_COMPILER__mutex_new_unscanned_Debug C$:/Users/jayas/CLionProjects/mutex_new/stat.c || cmake_object_order_depends_target_mutex_new
+  DEP_FILE = CMakeFiles\mutex_new.dir\stat.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\mutex_new.dir
+  OBJECT_FILE_DIR = CMakeFiles\mutex_new.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target mutex_new
@@ -93,7 +99,7 @@ build CMakeFiles/mutex_new.dir/executer.c.obj: C_COMPILER__mutex_new_unscanned_D
 #############################################
 # Link the executable mutex_new.exe
 
-build mutex_new.exe: C_EXECUTABLE_LINKER__mutex_new_Debug CMakeFiles/mutex_new.dir/main.c.obj CMakeFiles/mutex_new.dir/linked_list.c.obj CMakeFiles/mutex_new.dir/mutex.c.obj CMakeFiles/mutex_new.dir/rw_lock.c.obj CMakeFiles/mutex_new.dir/serial.c.obj CMakeFiles/mutex_new.dir/executer.c.obj
+build mutex_new.exe: C_EXECUTABLE_LINKER__mutex_new_Debug CMakeFiles/mutex_new.dir/main.c.obj CMakeFiles/mutex_new.dir/linked_list.c.obj CMakeFiles/mutex_new.dir/mutex.c.obj CMakeFiles/mutex_new.dir/rw_lock.c.obj CMakeFiles/mutex_new.dir/serial.c.obj CMakeFiles/mutex_new.dir/executer.c.obj CMakeFiles/mutex_new.dir/stat.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\mutex_new.dir

@@ -13,4 +13,6 @@ add_executable(mutex_new main.c
         serial.c
         serial.h
         executer.c
-        executer.h)
+        executer.h
+        stat.c
+        stat.h)
