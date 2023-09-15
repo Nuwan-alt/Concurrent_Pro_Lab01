@@ -16,9 +16,9 @@ void executer(){
 
     // Serial execution
     for(int i=0;i<3;i++){
-        snprintf(path, sizeof(path), "../results/serial/Case%d.txt", i + 1);
+        snprintf(path, sizeof(path), "../results/serial/Serial_Case%d.txt", i + 1);
         fp = fopen(path, "w+");
-        printf("Serial Case %d\n",i+1);
+        printf("Serial Case %d completed\n",i+1);
 
         for(int j=0;j<385;j++){
             unsigned long serial_runtime;
@@ -35,10 +35,10 @@ void executer(){
     for(int i=0;i<3;i++){
 
 
-        printf("Mutex Case %d\n",i+1);
+        printf("Mutex Case %d completed\n",i+1);
 
         for(int  k=0;k<4;k++){
-            snprintf(path, sizeof(path), "../results/mutex/Case%d_T%d.txt", i + 1,numThreads[k]);
+            snprintf(path, sizeof(path), "../results/mutex/Mutex_Case%d_T%d.txt", i + 1,numThreads[k]);
             fp = fopen(path, "w+");
             for(int j=0;j<385;j++){
                 unsigned long mutex_runtime;
@@ -54,10 +54,10 @@ void executer(){
     //rw_lock execution
     for(int i=0;i<3;i++){
 
-        printf("RW Case %d\n",i+1);
+        printf("RW Case %d completed\n",i+1);
 
         for(int  k=0;k<4;k++){
-            snprintf(path, sizeof(path), "../results/rw_lock/Case%d_T%d.txt", i + 1,numThreads[k]);
+            snprintf(path, sizeof(path), "../results/rw_lock/RW_Case%d_T%d.txt", i + 1,numThreads[k]);
             fp = fopen(path, "w+");
             for(int j=0;j<385;j++){
                 unsigned long re_runtime;

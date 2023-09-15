@@ -76,8 +76,6 @@ unsigned long manage_mutex(int m,int n, float insFrac, float memFrac, float delF
     return time;
 }
 
-
-
 void *conMutex_runner(void* rank){
     int ins_mu = 0;
     int mem_mu = 0;

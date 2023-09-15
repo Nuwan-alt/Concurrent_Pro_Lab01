@@ -1,40 +1,37 @@
 import matplotlib.pyplot as plt
-import stat  # Import your stat.py module with data
+import numpy as np
 
-# Extract data from stat.py
-# Replace these with the actual data structures from stat.py
-case1_data = {
-    'threads': [1, 2, 4, 8],
-    'serial_times': [10.5, 6.2, 4.1, 3.5],
-    'mutex_times': [12.1, 7.9, 5.8, 4.2],
+# Sample data structure (replace this with your actual data)
+data = {
+    'Serial': [0.1, 0, 0, 0],  # Average execution times for Serial case
+    'Mutex': [0.08, 0.18, 0.28, 0.38],  # Average execution times for Mutex case
+    'ReadWriteLock': [0.06, 0.16, 0.26, 0.36],  # Average execution times for ReadWriteLock case
 }
 
-case2_data = {
-    'threads': [1, 2, 4, 8],
-    'serial_times': [9.5, 5.9, 3.8, 3.2],
-    'mutex_times': [11.2, 7.3, 5.2, 4.0],
-}
+# Number of threads used for the experiments
+num_threads = [1, 2, 4, 8]  # Adjust this list according to your data
 
-case3_data = {
-    'threads': [1, 2, 4, 8],
-    'serial_times': [8.8, 5.3, 3.6, 3.0],
-    'mutex_times': [10.6, 6.7, 4.7, 3.8],
-}
+# Set the width of the bars
+bar_width = 0.2
 
-# Create three subplots (one for each case)
-fig, axs = plt.subplots(1, 3, figsize=(15, 5))
+# Generate positions for bars for each case
+positions = np.arange(len(num_threads))
 
-# Plot each case
-for i, data in enumerate([case1_data, case2_data, case3_data]):
-    ax = axs[i]
-    ax.bar(data['threads'], data['serial_times'], label='Serial', color='blue', alpha=0.6)
-    ax.bar(data['threads'], data['mutex_times'], label='Mutex', color='green', alpha=0.6, bottom=data['serial_times'])
+# Plotting
+for i, (case, times) in enumerate(data.items()):
+    # Adjust the x positions for each set of bars to avoid overlap
+    x_positions = positions + i * bar_width
 
-    ax.set_xlabel('Number of Threads')
-    ax.set_ylabel('Average Execution Time')
-    ax.set_title(f'Case {i+1}')
-    ax.set_xticks(data['threads'])
-    ax.legend()
+    # Create the bar chart
+    plt.bar(x_positions, times, bar_width, label=case)
 
+# Customize the plot
+plt.xlabel('Number of Threads')
+plt.ylabel('Average Execution Time')
+plt.title('Average Execution Time vs. Number of Threads')
+plt.xticks(positions + bar_width * (len(data) - 1) / 2, num_threads)
+plt.legend()
+
+# Show the plot
 plt.tight_layout()
 plt.show()
